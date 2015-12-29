@@ -1,0 +1,21 @@
+{
+  "name": "maintain-api",
+  "version": "0.0.1",
+  "description": "Maintain API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "gulp": "latest",
+    "pg": "^4.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.15.1",
+    "sequelize-cli": "^2.2.1"
+  }
+}
