@@ -11,17 +11,10 @@ module.exports = function(sequelize, DataTypes) {
     auth_token: {
       type: DataTypes.STRING,
       field: 'auth_token'
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      field: 'created_at'
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      field: 'updated_at'
     }
   }, {
     timestamps: true,
+    underscored: true,
     freezeTableName: true
   });
   return User

@@ -11,9 +11,8 @@ var logger = function (req, res, next) {
 app.use(logger);
 app.use(bodyParser.json());
 
-db.users.all().each(function (user) {
-    console.log(user.dataValues.id, user.dataValues.name, user.dataValues.email);
-});
-
-app.listen(port);
-console.log('Maintain-API running at http://localhost:' + port);
+db.sequelize.sync().then(function () {
+  console.log('DB Sync');
+  app.listen(port);
+  console.log('Maintain-API running at http://localhost:' + port);
+})
