@@ -13,6 +13,7 @@
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "gulp": "latest",
+    "passport": "^0.3.2",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.15.1",
