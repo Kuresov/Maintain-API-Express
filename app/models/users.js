@@ -1,3 +1,6 @@
+// Users Model
+
+var jwt = require('jwt-simple');
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('users', {
     name: {
@@ -20,3 +23,5 @@ module.exports = function(sequelize, DataTypes) {
   return User
 }
 
+// Onsave - JWT to gen auth token
+// jwt.encode(payload, secret);
