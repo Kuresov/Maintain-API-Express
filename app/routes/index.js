@@ -9,7 +9,7 @@ module.exports = function(app) {
   app.get('/users',
     passport.authenticate('bearer', { session: false }),
     function(req, res) {
-      users.render;
+      users.render(req, res);
     });
 
   var vehicles = require('../controllers/vehicles');

@@ -1,35 +1,22 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    //passport = require('passport'),
+    passport = require('passport'),
     BearerStrategy = require('passport-http-bearer').Strategy;
 
 module.exports = function () {
   var app = express();
-  var passport = require('passport');
 
   // Configure passport token strategy
-  //passport.use(new BearerStrategy(
-  //  function (token, done) {
-  //    db.users.findOne({
-  //      where: { auth_token: token }
-  //    }).then(function (user) {
-  //      if (!user) { return done(null, false, {message: 'Invalid Token'}) }
-  //      return done(null, user, { scope: 'all' });
-  //    }).fail(function (err) {
-  //      console.log("DB Error:", err);
-  //      return done(err);
-  //    });
-  //  })
-  //);
-
   passport.use(new BearerStrategy(
     function (token, done) {
-      var user = db.users.findOne({
+      db.users.findOne({
         where: { auth_token: token }
+      }).then(function (user) {
+        if (!user) { return done(null, false, {message: 'Invalid Token'}) }
+        return done(null, user);
+      }).catch(function (err) {
+        return done(err, false);
       });
-      console.log(user);
-      if (!user) { return done(null, false, {message: 'Invalid Token'}) }
-      return done(null, user, { scope: 'all' });
     })
   );
 
@@ -40,7 +27,6 @@ module.exports = function () {
   };
 
   app.use(logger);
-  //app.use(isAuthenticated);
   app.use(passport.initialize());
   app.use(bodyParser.json());
 
