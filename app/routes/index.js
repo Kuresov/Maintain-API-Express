@@ -1,17 +1,13 @@
 // Routes
-
+var routes = require('require-dir')();
+var express = require('express');
 var passport = require('passport');
+
 module.exports = function(app) {
-  var index = require('../controllers');
-  app.get('/', index.render);
 
-  var users = require('../controllers/users');
-  app.get('/users',
-    passport.authenticate('bearer', { session: false }),
-    function(req, res) {
-      users.render(req, res);
-    });
-
-  var vehicles = require('../controllers/vehicles');
-  app.get('/vehicles', vehicles.render);
+  Object.keys(routes).forEach(function(routeName) {
+    var router = express.Router();
+    require('./' + routeName)(router);
+    app.use('/' + routeName, router);
+  })
 }

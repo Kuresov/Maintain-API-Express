@@ -25,6 +25,13 @@ module.exports = function () {
     next();
   };
 
+  // For viewing routes; http://localhost:PORT/pathfinder/
+  var pathfinderUI = require('pathfinder-ui');
+  app.use('/pathfinder', function (req, res, next) {
+    pathfinderUI(app);
+    next();
+  }, pathfinderUI.router);
+
   app.use(logger);
   app.use(passport.initialize());
   app.use(bodyParser.json());
