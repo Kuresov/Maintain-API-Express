@@ -12,7 +12,6 @@ module.exports = function () {
       db.users.findOne({
         where: { auth_token: token }
       }).then(function (user) {
-        if (!user) { return done(null, false, {message: 'Invalid Token'}) }
         return done(null, user);
       }).catch(function (err) {
         return done(err, false);
