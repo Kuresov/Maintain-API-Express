@@ -11,12 +11,18 @@ module.exports = function(router) {
     next();
   })
   .get(function(req, res) {
-    vehicles.render(req, res);
+    vehicles.index(req, res);
   })
   .post(function(req, res) {
-    res.send('created');
+    vehicles.create(req, res)
+  })
+  .put(function(req, res) {
+    vehicles.create(req, res)
+  })
+  .patch(function(req, res) {
+    vehicles.update(req, res)
+  })
+  .delete(function(req, res) {
+    vehicles.delete(req, res)
   });
-  .put()
-  .patch()
-  .delete();
 }
