@@ -23,7 +23,7 @@ module.exports = function(router) {
     next();
   })
   .get(function(req, res) {
-    users.render(req, res);
+    users.index(req, res);
   })
   .post(function(req, res) {
     users.create(req, res)

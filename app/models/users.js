@@ -2,7 +2,7 @@
 
 var jwt = require('jwt-simple');
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define('users', {
+  var User = sequelize.define('User', {
     name: {
       type: DataTypes.STRING,
       field: 'name'
@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       field: 'auth_token'
     }
   }, {
+    tableName: 'users',
     timestamps: true,
     underscored: true,
     freezeTableName: true
